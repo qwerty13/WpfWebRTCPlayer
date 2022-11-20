@@ -76,7 +76,6 @@ namespace WpfWebRTCPlayer
 
             await web_player.EnsureCoreWebView2Async();
             web_player.NavigateToString(html);
-            //web_player.CoreWebView2.Navigate(@"Assets\Web\index.html");
         }
     }
 }

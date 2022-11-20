@@ -14,7 +14,7 @@
         </DockPanel>
         <DockPanel Margin="32,0,32,27" VerticalAlignment="Bottom">
             <Button x:Name="btn_play" Content="Play" HorizontalAlignment="Left" VerticalAlignment="Top" Click="btn_play_Click" Padding="15,1,15,1"/>
-            <Grid Width="10"/>
+            <Grid Width="5"/>
             <Button x:Name="btn_stop" Content="Stop" HorizontalAlignment="Left" VerticalAlignment="Top" Click="btn_stop_Click" Padding="10,1,10,1"/>
             <Grid Width="10"/>
             <CheckBox x:Name="chk_playAuto" Margin="0,2,0,0" Content="Autoplay at Start" IsChecked="{Binding Source={x:Static properties:Settings.Default}, Path=set_playAuto, Mode=TwoWay}"/>

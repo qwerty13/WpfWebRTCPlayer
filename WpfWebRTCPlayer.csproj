@@ -1,5 +1,9 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
+  <PropertyGroup Label="Globals">
+    <WebView2LoaderPreference>Static</WebView2LoaderPreference>
+  </PropertyGroup>
+
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
     <TargetFramework>net6.0-windows</TargetFramework>
@@ -7,7 +11,13 @@
     <UseWPF>true</UseWPF>
     <ApplicationManifest>app.manifest</ApplicationManifest>
     <Authors>$(AssemblyName)</Authors>
+    <Platforms>AnyCPU;x86</Platforms>
+    <ApplicationIcon>WpfWebRTCPlayerLogo.ico</ApplicationIcon>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="WpfWebRTCPlayerLogo.ico" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.1418.22" />
@@ -41,6 +51,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="img\" />
     <Folder Include="Resources\" />
   </ItemGroup>
 

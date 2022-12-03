@@ -22,7 +22,7 @@ namespace WpfWebRTCPlayer
     {
         public PlayerWindow()
         {
-            Environment.SetEnvironmentVariable("WEBVIEW2_ADDITIONAL_BROWSER_ARGUMENTS", "--autoplay-policy=no-user-gesture-required");
+            //Environment.SetEnvironmentVariable("WEBVIEW2_ADDITIONAL_BROWSER_ARGUMENTS", "--autoplay-policy=no-user-gesture-required --disable-gpu-driver-bug-workarounds --ignore-gpu-blocklist");
             InitializeComponent();
         }
 
@@ -62,7 +62,7 @@ namespace WpfWebRTCPlayer
                                 file: '" + Properties.Settings.Default.set_serverAddress + @"'
                             }
                         ],
-                        expandFullScreenUI: false,
+                        expandFullScreenUI: true,
                         controls: false,
                         showBigPlayButton: false,
                         autoStart: true,
@@ -74,7 +74,9 @@ namespace WpfWebRTCPlayer
             </html>
             ";
 
-            await web_player.EnsureCoreWebView2Async();
+            var options = new CoreWebView2EnvironmentOptions("--autoplay-policy=no-user-gesture-required --disable-gpu-driver-bug-workarounds --ignore-gpu-blocklist");
+            var env = await CoreWebView2Environment.CreateAsync(null, null, options);
+            await web_player.EnsureCoreWebView2Async(env);
             web_player.NavigateToString(html);
         }
     }

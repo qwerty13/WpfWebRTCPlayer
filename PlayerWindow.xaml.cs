@@ -26,12 +26,25 @@ namespace WpfWebRTCPlayer
             InitializeComponent();
         }
 
-        private async void web_player_Loaded(object sender, RoutedEventArgs e)
+        private async void web_player_Initialized(object sender, EventArgs e)
         {
+            var options = new CoreWebView2EnvironmentOptions("--autoplay-policy=no-user-gesture-required --disable-gpu-driver-bug-workarounds --ignore-gpu-blocklist");
+            var env = await CoreWebView2Environment.CreateAsync(null, null, options);
+            try
+            {
+                await web_player.EnsureCoreWebView2Async(env);
+            }
+            catch (Exception) { }
+
             if (Properties.Settings.Default.set_playAuto)
             {
                 playLive();
             }
+        }
+
+        private async void web_player_Loaded(object sender, RoutedEventArgs e)
+        {
+            
         }
 
         public async void playLive()
@@ -62,7 +75,7 @@ namespace WpfWebRTCPlayer
                                 file: '" + Properties.Settings.Default.set_serverAddress + @"'
                             }
                         ],
-                        expandFullScreenUI: true,
+                        expandFullScreenUI: false,
                         controls: false,
                         showBigPlayButton: false,
                         autoStart: true,
@@ -74,10 +87,12 @@ namespace WpfWebRTCPlayer
             </html>
             ";
 
-            var options = new CoreWebView2EnvironmentOptions("--autoplay-policy=no-user-gesture-required --disable-gpu-driver-bug-workarounds --ignore-gpu-blocklist");
-            var env = await CoreWebView2Environment.CreateAsync(null, null, options);
-            await web_player.EnsureCoreWebView2Async(env);
             web_player.NavigateToString(html);
+        }
+
+        public async void stopLive()
+        {
+            web_player.NavigateToString("");
         }
     }
 }

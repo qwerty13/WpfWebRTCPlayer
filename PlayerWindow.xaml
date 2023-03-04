@@ -9,10 +9,10 @@
         mc:Ignorable="d"
         Title="Player Window" Height="{Binding Source={x:Static properties:Settings.Default}, Path=set_playerHeight, Mode=TwoWay}" Width="{Binding Source={x:Static properties:Settings.Default}, Path=set_playerWidth, Mode=TwoWay}" WindowStyle="None" AllowsTransparency="True" Topmost="True" Cursor="None" Background="Black">
     <Grid>
-        <DockPanel>
+        <Grid>
             <wv2:WebView2 Name="web_player"
-                  Source="" DefaultBackgroundColor="{Binding DefaultBackgroundColor.Black, ElementName=web_player, Mode=OneWay}" Loaded="web_player_Loaded" Cursor="None"
-            />
-        </DockPanel>
+                DefaultBackgroundColor="{Binding DefaultBackgroundColor.Black, ElementName=web_player, Mode=OneWay}"
+                Loaded="web_player_Loaded" Cursor="None" Initialized="web_player_Initialized" ForceCursor="True" Focusable="False"/>
+        </Grid>
     </Grid>
 </Window>

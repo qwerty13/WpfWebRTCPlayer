@@ -6,28 +6,33 @@
         xmlns:local="clr-namespace:WpfWebRTCPlayer"
         xmlns:properties="clr-namespace:WpfWebRTCPlayer.Properties"
         mc:Ignorable="d"
-        Title="WebRTC Player" Height="190" Width="450" Loaded="win_main_Loaded" Closed="win_main_Closed" ResizeMode="CanMinimize">
+        Title="WebRTC Player" Height="217" Width="450" Loaded="win_main_Loaded" Closed="win_main_Closed" ResizeMode="CanMinimize" WindowStartupLocation="CenterScreen">
     <Grid>
-        <DockPanel Margin="32,0,32,54" VerticalAlignment="Bottom">
+        <DockPanel Margin="32,0,32,84" VerticalAlignment="Bottom">
             <Label Content="Address: " Padding="0,5,0,5"/>
             <TextBox x:Name="txt_address" Text="{Binding Source={x:Static properties:Settings.Default}, Path=set_serverAddress, Mode=TwoWay}" Height="20"/>
         </DockPanel>
+        <DockPanel Margin="32,0,32,57" VerticalAlignment="Bottom">
+            <Button x:Name="btn_play" Content="Play" HorizontalAlignment="Left" VerticalAlignment="Top" Click="btn_play_Click" Padding="15,1,15,1" Margin="0,0,3,0"/>
+            <Button x:Name="btn_stop" Content="Stop" HorizontalAlignment="Left" VerticalAlignment="Top" Click="btn_stop_Click" Padding="10,1,10,1" Margin="0,0,3,0"/>
+            <CheckBox x:Name="chk_playAuto" Margin="3,2,3,0" Content="Autoplay at Start" IsChecked="{Binding Source={x:Static properties:Settings.Default}, Path=set_playAuto, Mode=TwoWay}"/>
+            <CheckBox x:Name="chk_autoClose" Margin="3,2,3,0" Content="Close at:" Click="chk_autoClose_Click" PreviewMouseUp="chk_autoClose_PreviewMouseUp"/>
+            <TextBox x:Name="txt_autoCloseHour" Text="{Binding Source={x:Static properties:Settings.Default}, Path=set_closeHour, Mode=TwoWay}" Width="30" Height="20" MaxLength="2" MaxLines="1" ToolTip="00 - 23"/>
+            <TextBlock Text=" : "/>
+            <TextBox x:Name="txt_autoCloseMinute" Text="{Binding Source={x:Static properties:Settings.Default}, Path=set_closeMinute, Mode=TwoWay}" Width="30" Height="20" HorizontalAlignment="Left" MaxLength="2" MaxLines="1" ToolTip="00 - 59"/>
+        </DockPanel>
         <DockPanel Margin="32,0,32,27" VerticalAlignment="Bottom">
-            <Button x:Name="btn_play" Content="Play" HorizontalAlignment="Left" VerticalAlignment="Top" Click="btn_play_Click" Padding="15,1,15,1"/>
-            <Grid Width="5"/>
-            <Button x:Name="btn_stop" Content="Stop" HorizontalAlignment="Left" VerticalAlignment="Top" Click="btn_stop_Click" Padding="10,1,10,1"/>
-            <Grid Width="10"/>
-            <CheckBox x:Name="chk_playAuto" Margin="0,2,0,0" Content="Autoplay at Start" IsChecked="{Binding Source={x:Static properties:Settings.Default}, Path=set_playAuto, Mode=TwoWay}"/>
-            <Grid Width="10"/>
             <TextBlock Text="ViewBox: " Height="17" FontWeight="Bold"/>
-            <TextBox x:Name="txt_width" Text="{Binding Source={x:Static properties:Settings.Default}, Path=set_playerWidth, Mode=TwoWay}" Width="35" Height="20"/>
+            <TextBox x:Name="txt_width" Text="{Binding Source={x:Static properties:Settings.Default}, Path=set_playerWidth, Mode=TwoWay}" Width="40" Height="20"/>
             <TextBlock Text=" x "/>
-            <TextBox x:Name="txt_height" Text="{Binding Source={x:Static properties:Settings.Default}, Path=set_playerHeight, Mode=TwoWay}" Width="35" Height="20" HorizontalAlignment="Left"/>
+            <TextBox x:Name="txt_height" Text="{Binding Source={x:Static properties:Settings.Default}, Path=set_playerHeight, Mode=TwoWay}" Width="40" Height="20" HorizontalAlignment="Left"/>
+            <Grid Width="10"/>
+            <CheckBox x:Name="chk_displayGrip" Margin="0,2,0,0" Content="Show Resize Grip" Click="chk_displayGrip_Click"/>
         </DockPanel>
         <StackPanel HorizontalAlignment="Center" Margin="0,13,0,0" VerticalAlignment="Top">
             <DockPanel>
                 <TextBlock Text="WebRTC Player" VerticalAlignment="Top" FontSize="24" FontWeight="Bold"/>
-                <TextBlock Text="v.0.1" Margin="3,0,0,3" VerticalAlignment="Bottom"/>
+                <TextBlock x:Name="lbl_version" Text="v.0.1" Margin="3,0,0,3" VerticalAlignment="Bottom"/>
             </DockPanel>
             <DockPanel>
                 <TextBlock Text="By Morteza Rastegar"/>

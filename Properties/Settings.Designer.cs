@@ -70,5 +70,77 @@ namespace WpfWebRTCPlayer.Properties {
                 this["set_playerHeight"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("450")]
+        public int WindowWidth {
+            get {
+                return ((int)(this["WindowWidth"]));
+            }
+            set {
+                this["WindowWidth"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("217")]
+        public int WindowHeight {
+            get {
+                return ((int)(this["WindowHeight"]));
+            }
+            set {
+                this["WindowHeight"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int WindowTop {
+            get {
+                return ((int)(this["WindowTop"]));
+            }
+            set {
+                this["WindowTop"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int WindowLeft {
+            get {
+                return ((int)(this["WindowLeft"]));
+            }
+            set {
+                this["WindowLeft"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1")]
+        public uint set_closeHour {
+            get {
+                return ((uint)(this["set_closeHour"]));
+            }
+            set {
+                this["set_closeHour"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("30")]
+        public uint set_closeMinute {
+            get {
+                return ((uint)(this["set_closeMinute"]));
+            }
+            set {
+                this["set_closeMinute"] = value;
+            }
+        }
     }
 }

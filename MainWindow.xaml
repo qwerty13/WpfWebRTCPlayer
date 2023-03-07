@@ -15,11 +15,8 @@
         <DockPanel Margin="32,0,32,57" VerticalAlignment="Bottom">
             <Button x:Name="btn_play" Content="Play" HorizontalAlignment="Left" VerticalAlignment="Top" Click="btn_play_Click" Padding="15,1,15,1" Margin="0,0,3,0"/>
             <Button x:Name="btn_stop" Content="Stop" HorizontalAlignment="Left" VerticalAlignment="Top" Click="btn_stop_Click" Padding="10,1,10,1" Margin="0,0,3,0"/>
-            <CheckBox x:Name="chk_playAuto" Margin="3,2,3,0" Content="Autoplay at Start" IsChecked="{Binding Source={x:Static properties:Settings.Default}, Path=set_playAuto, Mode=TwoWay}"/>
-            <CheckBox x:Name="chk_autoClose" Margin="3,2,3,0" Content="Close at:" Click="chk_autoClose_Click" PreviewMouseUp="chk_autoClose_PreviewMouseUp"/>
-            <TextBox x:Name="txt_autoCloseHour" Text="{Binding Source={x:Static properties:Settings.Default}, Path=set_closeHour, Mode=TwoWay}" Width="30" Height="20" MaxLength="2" MaxLines="1" ToolTip="00 - 23"/>
-            <TextBlock Text=" : "/>
-            <TextBox x:Name="txt_autoCloseMinute" Text="{Binding Source={x:Static properties:Settings.Default}, Path=set_closeMinute, Mode=TwoWay}" Width="30" Height="20" HorizontalAlignment="Left" MaxLength="2" MaxLines="1" ToolTip="00 - 59"/>
+            <CheckBox x:Name="chk_playAuto" Margin="3,2,10,0" Content="Autoplay at Start" IsChecked="{Binding Source={x:Static properties:Settings.Default}, Path=set_playAuto, Mode=TwoWay}"/>
+            <Button x:Name="btn_schedule" Content="🕒 Schedule" HorizontalAlignment="Left" VerticalAlignment="Top" Click="btn_schedule_Click" Padding="10,1,10,1" Margin="0,0,3,0"/>
         </DockPanel>
         <DockPanel Margin="32,0,32,27" VerticalAlignment="Bottom">
             <TextBlock Text="ViewBox: " Height="17" FontWeight="Bold"/>

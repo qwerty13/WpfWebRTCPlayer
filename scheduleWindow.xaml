@@ -1,0 +1,32 @@
+﻿<Window x:Class="WpfWebRTCPlayer.scheduleWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfWebRTCPlayer"
+        xmlns:properties="clr-namespace:WpfWebRTCPlayer.Properties" xmlns:c="clr-namespace:CalcBinding;assembly=CalcBinding"
+        mc:Ignorable="d"
+        Title="Schedule Program" Height="200" Width="310" WindowStartupLocation="CenterOwner" Topmost="True" ShowInTaskbar="False" ResizeMode="NoResize" Closed="Window_Closed">
+    <Grid>
+        <TextBlock Text="Schedule Program" Margin="0,15,0,0" VerticalAlignment="Top" HorizontalAlignment="Center" FontSize="16" FontWeight="Bold"/>
+
+        <StackPanel Margin="0,55,0,0" VerticalAlignment="Top" HorizontalAlignment="Center">
+            <DockPanel Margin="0,0,0,5" VerticalAlignment="Top">
+                <CheckBox x:Name="chk_autoCloseEnable" Margin="5,2,5,0" Content="Hide Display at:" IsChecked="{Binding Source={x:Static properties:Settings.Default}, Path=set_closeEnable, Mode=TwoWay}" Click="chk_autoClose_Click" PreviewMouseUp="chk_autoClose_PreviewMouseUp"/>
+                <TextBox x:Name="txt_autoCloseHour" Text="{Binding Source={x:Static properties:Settings.Default}, Path=set_closeHour, Mode=TwoWay}" IsEnabled="{c:Binding Source={x:Static properties:Settings.Default}, Path=!set_closeEnable, Mode=OneWay}" Width="30" Height="20" MaxLength="2" MaxLines="1" ToolTip="00 - 23" PreviewTextInput="hourChecker"/>
+                <TextBlock Text=" : "/>
+                <TextBox x:Name="txt_autoCloseMinute" Text="{Binding Source={x:Static properties:Settings.Default}, Path=set_closeMinute, Mode=TwoWay}" IsEnabled="{c:Binding Source={x:Static properties:Settings.Default}, Path=!set_closeEnable, Mode=OneWay}" Width="30" Height="20" HorizontalAlignment="Left" MaxLength="2" MaxLines="1" ToolTip="00 - 59" PreviewTextInput="minuteChecker"/>
+                <CheckBox x:Name="chk_closeExit" Margin="6,2,3,0" Content="and Exit" Click="chk_autoClose_Click" IsEnabled="{c:Binding Source={x:Static properties:Settings.Default}, Path=!set_closeEnable, Mode=OneWay}"/>
+            </DockPanel>
+            <DockPanel Margin="0,5,0,5" VerticalAlignment="Top">
+                <CheckBox x:Name="chk_autoOpenEnable" Margin="5,2,5,0" Content="Show Display at:" IsChecked="{Binding Source={x:Static properties:Settings.Default}, Path=set_openEnable, Mode=TwoWay}"/>
+                <TextBox x:Name="txt_autoOpenHour" Text="{Binding Source={x:Static properties:Settings.Default}, Path=set_openHour, Mode=TwoWay}" IsEnabled="{c:Binding Source={x:Static properties:Settings.Default}, Path=!set_openEnable, Mode=OneWay}" Width="30" Height="20" MaxLength="2" MaxLines="1" ToolTip="00 - 23" PreviewTextInput="hourChecker"/>
+                <TextBlock Text=" : "/>
+                <TextBox x:Name="txt_autoOpenMinute" Text="{Binding Source={x:Static properties:Settings.Default}, Path=set_openMinute, Mode=TwoWay}" IsEnabled="{c:Binding Source={x:Static properties:Settings.Default}, Path=!set_openEnable, Mode=OneWay}" Width="30" Height="20" HorizontalAlignment="Left" MaxLength="2" MaxLines="1" ToolTip="00 - 59" PreviewTextInput="minuteChecker"/>
+            </DockPanel>
+            <DockPanel Margin="0,5,0,5" VerticalAlignment="Top">
+                <CheckBox x:Name="chk_autorunEnable" Margin="5,2,5,0" Content="Start player on windows start" IsChecked="{Binding Source={x:Static properties:Settings.Default}, Path=set_autorunEnable, Mode=TwoWay}" Checked="autorunCheck"/>
+            </DockPanel>
+        </StackPanel>
+    </Grid>
+</Window>

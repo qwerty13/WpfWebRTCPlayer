@@ -121,7 +121,7 @@ namespace WpfWebRTCPlayer.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("1")]
+        [global::System.Configuration.DefaultSettingValueAttribute("12")]
         public uint set_closeHour {
             get {
                 return ((uint)(this["set_closeHour"]));
@@ -140,6 +140,78 @@ namespace WpfWebRTCPlayer.Properties {
             }
             set {
                 this["set_closeMinute"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool set_closeEnable {
+            get {
+                return ((bool)(this["set_closeEnable"]));
+            }
+            set {
+                this["set_closeEnable"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool set_closeExit {
+            get {
+                return ((bool)(this["set_closeExit"]));
+            }
+            set {
+                this["set_closeExit"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("13")]
+        public uint set_openHour {
+            get {
+                return ((uint)(this["set_openHour"]));
+            }
+            set {
+                this["set_openHour"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("30")]
+        public uint set_openMinute {
+            get {
+                return ((uint)(this["set_openMinute"]));
+            }
+            set {
+                this["set_openMinute"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool set_openEnable {
+            get {
+                return ((bool)(this["set_openEnable"]));
+            }
+            set {
+                this["set_openEnable"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool set_autorunEnable {
+            get {
+                return ((bool)(this["set_autorunEnable"]));
+            }
+            set {
+                this["set_autorunEnable"] = value;
             }
         }
     }

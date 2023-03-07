@@ -61,13 +61,35 @@ namespace WpfWebRTCPlayer
 
         void closeTimer_Tick(object sender, EventArgs e)
         {
-            if ((bool)chk_autoClose.IsChecked)
+            if (Properties.Settings.Default.set_closeEnable)
             {
-                string originTime = String.Format("{0:00}:{1:00}", Properties.Settings.Default.set_closeHour, Properties.Settings.Default.set_closeMinute);
+                string originTime = String.Format("{0:00}:{1:00}:00", Properties.Settings.Default.set_closeHour, Properties.Settings.Default.set_closeMinute);
                 DateTime nowDate = DateTime.Now;
-                string nowTime = String.Format("{0:00}:{1:00}", nowDate.Hour, nowDate.Minute);
+                string nowTime = String.Format("{0:00}:{1:00}:{2:00}", nowDate.Hour, nowDate.Minute, nowDate.Second);
                 if (originTime == nowTime)
-                    Application.Current.Shutdown();
+                {
+                    this.WindowState = WindowState.Minimized;
+                    myPW.stopLive();
+                    myPW.WindowState = WindowState.Minimized;
+                    if (Properties.Settings.Default.set_closeExit) Application.Current.Shutdown();
+                }
+            }
+
+            if (Properties.Settings.Default.set_openEnable)
+            {
+                string originTime = String.Format("{0:00}:{1:00}:00", Properties.Settings.Default.set_openHour, Properties.Settings.Default.set_openMinute);
+                DateTime nowDate = DateTime.Now;
+                string nowTime = String.Format("{0:00}:{1:00}:{2:00}", nowDate.Hour, nowDate.Minute, nowDate.Second);
+                if (originTime == nowTime)
+                {
+                    this.WindowState = WindowState.Normal;
+                    this.Show();
+                    this.Focus();
+                    myPW.WindowState = WindowState.Normal;
+                    myPW.Show();
+                    myPW.Focus();
+                    myPW.playLive();
+                }
             }
         }
 
@@ -88,37 +110,10 @@ namespace WpfWebRTCPlayer
             myPW.web_player.Margin = (bool)chk_displayGrip.IsChecked ? new Thickness(0, 0, 10, 10) : new Thickness(0, 0, 0, 0);
         }
 
-        private void chk_autoClose_Click(object sender, RoutedEventArgs e)
+        private void btn_schedule_Click(object sender, RoutedEventArgs e)
         {
-            txt_autoCloseHour.IsEnabled = (bool)!chk_autoClose.IsChecked;
-            txt_autoCloseMinute.IsEnabled = (bool)!chk_autoClose.IsChecked;
-
-            if ((bool)chk_autoClose.IsChecked)
-            {
-
-            }
-        }
-
-        private void chk_autoClose_PreviewMouseUp(object sender, MouseButtonEventArgs e)
-        {
-            if (!int.TryParse(txt_autoCloseHour.Text, out _) || !int.TryParse(txt_autoCloseMinute.Text, out _))
-            {
-                MessageBox.Show("Check clock parameters!");
-                e.Handled = false;
-                return;
-            }
-            if (int.Parse(txt_autoCloseHour.Text) < 0 || int.Parse(txt_autoCloseHour.Text) > 23)
-            {
-                MessageBox.Show("Clock hour is incorrect!\nEnter it between 0 and 23");
-                e.Handled = false;
-                return;
-            }
-            if (int.Parse(txt_autoCloseMinute.Text) < 0 || int.Parse(txt_autoCloseMinute.Text) > 59)
-            {
-                MessageBox.Show("Clock hour is incorrect!\nEnter it between 0 and 59");
-                e.Handled = false;
-                return;
-            }
+            var win_schedule = new scheduleWindow();
+            win_schedule.ShowDialog();
         }
     }
 }

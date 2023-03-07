@@ -27,10 +27,28 @@
       <Value Profile="(Default)">0</Value>
     </Setting>
     <Setting Name="set_closeHour" Type="System.UInt32" Scope="User">
-      <Value Profile="(Default)">1</Value>
+      <Value Profile="(Default)">12</Value>
     </Setting>
     <Setting Name="set_closeMinute" Type="System.UInt32" Scope="User">
       <Value Profile="(Default)">30</Value>
+    </Setting>
+    <Setting Name="set_closeEnable" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="set_closeExit" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="set_openHour" Type="System.UInt32" Scope="User">
+      <Value Profile="(Default)">13</Value>
+    </Setting>
+    <Setting Name="set_openMinute" Type="System.UInt32" Scope="User">
+      <Value Profile="(Default)">30</Value>
+    </Setting>
+    <Setting Name="set_openEnable" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="set_autorunEnable" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
     </Setting>
   </Settings>
 </SettingsFile>

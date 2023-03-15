@@ -206,6 +206,18 @@ namespace WpfWebRTCPlayer.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool set_openJustPlayer {
+            get {
+                return ((bool)(this["set_openJustPlayer"]));
+            }
+            set {
+                this["set_openJustPlayer"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
         public bool set_autorunEnable {
             get {
                 return ((bool)(this["set_autorunEnable"]));

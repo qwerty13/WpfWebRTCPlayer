@@ -26,7 +26,7 @@ namespace WpfWebRTCPlayer
     {
         PlayerWindow myPW;
         DispatcherTimer closeTimer = new DispatcherTimer();
-        
+
 
         public MainWindow()
         {
@@ -36,17 +36,13 @@ namespace WpfWebRTCPlayer
 
         private void win_main_Loaded(object sender, RoutedEventArgs e)
         {
+            Top = SystemParameters.PrimaryScreenHeight - Height - 50;
+            Left = (SystemParameters.PrimaryScreenWidth/2) - (Width/2);
+
             myPW = new PlayerWindow();
-            //myPW.Width = Properties.Settings.Default.set_playerWidth;
-            //myPW.Height = Properties.Settings.Default.set_playerHeight;
             myPW.Top = 0;
             myPW.Left = 0;
             myPW.Show();
-
-            Top = SystemParameters.PrimaryScreenHeight - Height - 50;
-            Left = (SystemParameters.PrimaryScreenWidth/2) - (Width/2);
-            //Top = myPW.Top + myPW.Height + 50;
-            //Left = myPW.Left + myPW.Width + 50;
 
             closeTimer.Tick += new EventHandler(closeTimer_Tick);
             closeTimer.Interval = new TimeSpan(0, 0, 0, 1);
@@ -70,7 +66,7 @@ namespace WpfWebRTCPlayer
                 {
                     this.WindowState = WindowState.Minimized;
                     myPW.stopLive();
-                    myPW.WindowState = WindowState.Minimized;
+                    myPW.Visibility = Visibility.Hidden;
                     if (Properties.Settings.Default.set_closeExit) Application.Current.Shutdown();
                 }
             }
@@ -82,12 +78,13 @@ namespace WpfWebRTCPlayer
                 string nowTime = String.Format("{0:00}:{1:00}:{2:00}", nowDate.Hour, nowDate.Minute, nowDate.Second);
                 if (originTime == nowTime)
                 {
-                    this.WindowState = WindowState.Normal;
-                    this.Show();
-                    this.Focus();
-                    myPW.WindowState = WindowState.Normal;
+                    if (!Properties.Settings.Default.set_openJustPlayer)
+                    {
+                        this.Show();
+                        this.WindowState = WindowState.Normal;
+                    }
                     myPW.Show();
-                    myPW.Focus();
+                    myPW.Visibility = Visibility.Visible;
                     myPW.playLive();
                 }
             }
@@ -106,14 +103,29 @@ namespace WpfWebRTCPlayer
 
         private void chk_displayGrip_Click(object sender, RoutedEventArgs e)
         {
-            myPW.win_player.ResizeMode = (bool)chk_displayGrip.IsChecked ? ResizeMode.CanResizeWithGrip : ResizeMode.NoResize;
-            myPW.web_player.Margin = (bool)chk_displayGrip.IsChecked ? new Thickness(0, 0, 10, 10) : new Thickness(0, 0, 0, 0);
+            //myPW.win_player.ResizeMode = (bool)chk_displayGrip.IsChecked ? ResizeMode.CanResizeWithGrip : ResizeMode.NoResize;
+            //myPW.web_player.Margin = (bool)chk_displayGrip.IsChecked ? new Thickness(0, 0, 10, 10) : new Thickness(0, 0, 0, 0);
         }
 
         private void btn_schedule_Click(object sender, RoutedEventArgs e)
         {
             var win_schedule = new scheduleWindow();
             win_schedule.ShowDialog();
+        }
+
+        private void btn_showPlayer_Click(object sender, RoutedEventArgs e)
+        {
+            if (myPW.IsVisible)
+            {
+                myPW.stopLive();
+                myPW.Visibility = Visibility.Hidden;
+            }
+            else
+            {
+                myPW.Visibility = Visibility.Visible;
+                myPW.Show();
+                myPW.playLive();
+            }
         }
     }
 }

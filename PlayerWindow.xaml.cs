@@ -5,12 +5,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 using Microsoft.Web.WebView2.Core;
 
 namespace WpfWebRTCPlayer
@@ -57,6 +59,7 @@ namespace WpfWebRTCPlayer
                 <meta http-equiv=""X-UA-Compatible"" content=""IE=edge"">
                 <meta name=""viewport"" content=""width=device-width, initial-scale=1.0"">
                 <title>OvenPlayer</title>
+                <style>* {cursor: none;}</style>
             </head>
             <body>
                 <div id=""player_id""></div>
@@ -79,6 +82,7 @@ namespace WpfWebRTCPlayer
                         controls: false,
                         showBigPlayButton: false,
                         autoStart: true,
+                        webrtcConfig: {timeoutMaxRetry:10},
                     });
                     //setTimeout(player.play(), 1000);
                     player.toggleFullScreen();
@@ -88,11 +92,31 @@ namespace WpfWebRTCPlayer
             ";
 
             web_player.NavigateToString(html);
+            web_player.CoreWebView2.Settings.AreBrowserAcceleratorKeysEnabled = false;
+            web_player.CoreWebView2.Settings.AreDefaultContextMenusEnabled = false;
         }
 
         public async void stopLive()
         {
             web_player.NavigateToString("");
+        }
+
+        private void win_player_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            Dispatcher.Invoke(() =>
+            {
+                Properties.Settings.Default.set_playerWidth = (int)this.Width - 10;
+                Properties.Settings.Default.set_playerHeight = (int)this.Height - 10;
+            });
+        }
+
+        private void ResizeGripper_H_DragDelta(object sender, DragDeltaEventArgs e)
+        {
+            Width += e.HorizontalChange;
+        }
+        private void ResizeGripper_V_DragDelta(object sender, DragDeltaEventArgs e)
+        {
+            Height += e.VerticalChange;
         }
     }
 }

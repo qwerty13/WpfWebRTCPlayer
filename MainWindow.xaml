@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfWebRTCPlayer"
+        xmlns:c="clr-namespace:CalcBinding;assembly=CalcBinding"
         xmlns:properties="clr-namespace:WpfWebRTCPlayer.Properties"
         mc:Ignorable="d"
         Title="WebRTC Player" Height="217" Width="450" Loaded="win_main_Loaded" Closed="win_main_Closed" ResizeMode="CanMinimize" WindowStartupLocation="CenterScreen">
@@ -16,15 +17,15 @@
             <Button x:Name="btn_play" Content="Play" HorizontalAlignment="Left" VerticalAlignment="Top" Click="btn_play_Click" Padding="15,1,15,1" Margin="0,0,3,0"/>
             <Button x:Name="btn_stop" Content="Stop" HorizontalAlignment="Left" VerticalAlignment="Top" Click="btn_stop_Click" Padding="10,1,10,1" Margin="0,0,3,0"/>
             <CheckBox x:Name="chk_playAuto" Margin="3,2,10,0" Content="Autoplay at Start" IsChecked="{Binding Source={x:Static properties:Settings.Default}, Path=set_playAuto, Mode=TwoWay}"/>
-            <Button x:Name="btn_schedule" Content="🕒 Schedule" HorizontalAlignment="Left" VerticalAlignment="Top" Click="btn_schedule_Click" Padding="10,1,10,1" Margin="0,0,3,0"/>
+            <Button x:Name="btn_schedule" Content="🕒 Schedule" HorizontalAlignment="Left" VerticalAlignment="Top" Click="btn_schedule_Click" Padding="7,1,7,1" Margin="0,0,5,0"/>
         </DockPanel>
         <DockPanel Margin="32,0,32,27" VerticalAlignment="Bottom">
             <TextBlock Text="ViewBox: " Height="17" FontWeight="Bold"/>
-            <TextBox x:Name="txt_width" Text="{Binding Source={x:Static properties:Settings.Default}, Path=set_playerWidth, Mode=TwoWay}" Width="40" Height="20"/>
+            <TextBox x:Name="txt_width" Text="{c:Binding Source={x:Static properties:Settings.Default}, Path=set_playerWidth, Mode=TwoWay}" Width="40" Height="20"/>
             <TextBlock Text=" x "/>
-            <TextBox x:Name="txt_height" Text="{Binding Source={x:Static properties:Settings.Default}, Path=set_playerHeight, Mode=TwoWay}" Width="40" Height="20" HorizontalAlignment="Left"/>
-            <Grid Width="10"/>
-            <CheckBox x:Name="chk_displayGrip" Margin="0,2,0,0" Content="Show Resize Grip" Click="chk_displayGrip_Click"/>
+            <TextBox x:Name="txt_height" Text="{c:Binding Source={x:Static properties:Settings.Default}, Path=set_playerHeight, Mode=TwoWay}" Width="40" Height="20" HorizontalAlignment="Left"/>
+            <Grid Width="5"/>
+            <Button x:Name="btn_showPlayer" Content="▶ Show" HorizontalAlignment="Left" VerticalAlignment="Top" Click="btn_showPlayer_Click" Padding="5,1,5,1" Margin="3,0,0,0"/>
         </DockPanel>
         <StackPanel HorizontalAlignment="Center" Margin="0,13,0,0" VerticalAlignment="Top">
             <DockPanel>

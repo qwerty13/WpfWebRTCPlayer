@@ -117,8 +117,8 @@ namespace WpfWebRTCPlayer
             ";
 
             web_player.NavigateToString(html);
-            //web_player.CoreWebView2.Settings.AreBrowserAcceleratorKeysEnabled = false;
-            //web_player.CoreWebView2.Settings.AreDefaultContextMenusEnabled = false;
+            web_player.CoreWebView2.Settings.AreBrowserAcceleratorKeysEnabled = false;
+            web_player.CoreWebView2.Settings.AreDefaultContextMenusEnabled = false;
         }
 
         public async void stopLive()

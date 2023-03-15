@@ -59,7 +59,7 @@ namespace WpfWebRTCPlayer
                 <meta http-equiv=""X-UA-Compatible"" content=""IE=edge"">
                 <meta name=""viewport"" content=""width=device-width, initial-scale=1.0"">
                 <title>OvenPlayer</title>
-                <style>* {cursor: none;}</style>
+                <style>* {cursor: none; direction: rtl; font-family: segoe ui;}</style>
             </head>
             <body>
                 <div id=""player_id""></div>
@@ -68,7 +68,7 @@ namespace WpfWebRTCPlayer
 
                 <script>
                     // Initialize OvenPlayer
-                    const player = OvenPlayer.create('player_id', {
+                    var player = OvenPlayer.create('player_id', {
                         sources: [
                             {
                                 label: 'label_for_webrtc',
@@ -82,18 +82,43 @@ namespace WpfWebRTCPlayer
                         controls: false,
                         showBigPlayButton: false,
                         autoStart: true,
-                        webrtcConfig: {timeoutMaxRetry:10},
                     });
-                    //setTimeout(player.play(), 1000);
                     player.toggleFullScreen();
+
+
+                    setInterval(function () { if (OvenPlayer.getPlayerByIndex(0).getState() == 'error') {
+
+                        if(OvenPlayer.getPlayerByIndex(0)){
+                            OvenPlayer.getPlayerByIndex(0).remove();
+                        }
+                        player = OvenPlayer.create('player_id', {
+                            sources: [
+                                {
+                                    label: 'label_for_webrtc',
+                                    // Set the type to 'webrtc'
+                                    type: 'webrtc',
+                                    // Set the file to WebRTC Signaling URL with OvenMediaEngine 
+                                    file: '" + Properties.Settings.Default.set_serverAddress + @"'
+                                }
+                            ],
+                            expandFullScreenUI: false,
+                            controls: false,
+                            showBigPlayButton: false,
+                            autoStart: true,
+                        });
+                        player.toggleFullScreen();
+                        }
+
+                    }, 2000);
+
                 </script>
             </body>
             </html>
             ";
 
             web_player.NavigateToString(html);
-            web_player.CoreWebView2.Settings.AreBrowserAcceleratorKeysEnabled = false;
-            web_player.CoreWebView2.Settings.AreDefaultContextMenusEnabled = false;
+            //web_player.CoreWebView2.Settings.AreBrowserAcceleratorKeysEnabled = false;
+            //web_player.CoreWebView2.Settings.AreDefaultContextMenusEnabled = false;
         }
 
         public async void stopLive()

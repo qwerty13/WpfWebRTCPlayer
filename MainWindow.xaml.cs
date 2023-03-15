@@ -101,12 +101,6 @@ namespace WpfWebRTCPlayer
             myPW.stopLive();
         }
 
-        private void chk_displayGrip_Click(object sender, RoutedEventArgs e)
-        {
-            //myPW.win_player.ResizeMode = (bool)chk_displayGrip.IsChecked ? ResizeMode.CanResizeWithGrip : ResizeMode.NoResize;
-            //myPW.web_player.Margin = (bool)chk_displayGrip.IsChecked ? new Thickness(0, 0, 10, 10) : new Thickness(0, 0, 0, 0);
-        }
-
         private void btn_schedule_Click(object sender, RoutedEventArgs e)
         {
             var win_schedule = new scheduleWindow();

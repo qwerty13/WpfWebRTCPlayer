@@ -68,7 +68,7 @@ namespace WpfWebRTCPlayer
 
                 <script>
                     // Initialize OvenPlayer
-                    var player = OvenPlayer.create('player_id', {
+                    var playSettings = {
                         sources: [
                             {
                                 label: 'label_for_webrtc',
@@ -82,33 +82,19 @@ namespace WpfWebRTCPlayer
                         controls: false,
                         showBigPlayButton: false,
                         autoStart: true,
-                    });
+                    };
+                    var player = OvenPlayer.create('player_id', playSettings);
                     player.toggleFullScreen();
 
 
-                    setInterval(function () { if (OvenPlayer.getPlayerByIndex(0).getState() == 'error') {
-
-                        if(OvenPlayer.getPlayerByIndex(0)){
-                            OvenPlayer.getPlayerByIndex(0).remove();
+                    setInterval(function () {
+                        if (OvenPlayer.getPlayerByIndex(0).getState() == 'error') {
+                            if(OvenPlayer.getPlayerByIndex(0)){
+                                OvenPlayer.getPlayerByIndex(0).remove();
+                            }
+                            player = OvenPlayer.create('player_id', playSettings);
+                            player.toggleFullScreen();
                         }
-                        player = OvenPlayer.create('player_id', {
-                            sources: [
-                                {
-                                    label: 'label_for_webrtc',
-                                    // Set the type to 'webrtc'
-                                    type: 'webrtc',
-                                    // Set the file to WebRTC Signaling URL with OvenMediaEngine 
-                                    file: '" + Properties.Settings.Default.set_serverAddress + @"'
-                                }
-                            ],
-                            expandFullScreenUI: false,
-                            controls: false,
-                            showBigPlayButton: false,
-                            autoStart: true,
-                        });
-                        player.toggleFullScreen();
-                        }
-
                     }, 2000);
 
                 </script>

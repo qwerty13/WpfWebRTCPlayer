@@ -14,8 +14,8 @@
             <TextBox x:Name="txt_address" Text="{Binding Source={x:Static properties:Settings.Default}, Path=set_serverAddress, Mode=TwoWay}" Height="20"/>
         </DockPanel>
         <DockPanel Margin="32,0,32,57" VerticalAlignment="Bottom">
-            <Button x:Name="btn_play" Content="Play" HorizontalAlignment="Left" VerticalAlignment="Top" Click="btn_play_Click" Padding="15,1,15,1" Margin="0,0,3,0"/>
-            <Button x:Name="btn_stop" Content="Stop" HorizontalAlignment="Left" VerticalAlignment="Top" Click="btn_stop_Click" Padding="10,1,10,1" Margin="0,0,3,0"/>
+            <Button x:Name="btn_play" Content="▶️ Play" HorizontalAlignment="Left" VerticalAlignment="Top" Click="btn_play_Click" Padding="15,1,15,1" Margin="0,0,3,0"/>
+            <Button x:Name="btn_stop" Content="⏹️ Stop" HorizontalAlignment="Left" VerticalAlignment="Top" Click="btn_stop_Click" Padding="10,1,10,1" Margin="0,0,3,0"/>
             <CheckBox x:Name="chk_playAuto" Margin="3,2,10,0" Content="Autoplay at Start" IsChecked="{Binding Source={x:Static properties:Settings.Default}, Path=set_playAuto, Mode=TwoWay}"/>
             <Button x:Name="btn_schedule" Content="🕒 Schedule" HorizontalAlignment="Left" VerticalAlignment="Top" Click="btn_schedule_Click" Padding="7,1,7,1" Margin="0,0,5,0"/>
         </DockPanel>
@@ -25,7 +25,7 @@
             <TextBlock Text=" x "/>
             <TextBox x:Name="txt_height" Text="{c:Binding Source={x:Static properties:Settings.Default}, Path=set_playerHeight, Mode=TwoWay}" Width="40" Height="20" HorizontalAlignment="Left"/>
             <Grid Width="5"/>
-            <Button x:Name="btn_showPlayer" Content="▶ Show" HorizontalAlignment="Left" VerticalAlignment="Top" Click="btn_showPlayer_Click" Padding="5,1,5,1" Margin="3,0,0,0"/>
+            <Button x:Name="btn_showPlayer" Content="👁 Show/Hide Player" HorizontalAlignment="Left" VerticalAlignment="Top" Click="btn_showPlayer_Click" Padding="5,1,5,1" Margin="3,0,0,0"/>
         </DockPanel>
         <StackPanel HorizontalAlignment="Center" Margin="0,13,0,0" VerticalAlignment="Top">
             <DockPanel>

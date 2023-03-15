@@ -12,7 +12,7 @@ namespace WpfWebRTCPlayer.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "17.4.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "17.5.0.0")]
     internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
@@ -68,54 +68,6 @@ namespace WpfWebRTCPlayer.Properties {
             }
             set {
                 this["set_playerHeight"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("450")]
-        public int WindowWidth {
-            get {
-                return ((int)(this["WindowWidth"]));
-            }
-            set {
-                this["WindowWidth"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("217")]
-        public int WindowHeight {
-            get {
-                return ((int)(this["WindowHeight"]));
-            }
-            set {
-                this["WindowHeight"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public int WindowTop {
-            get {
-                return ((int)(this["WindowTop"]));
-            }
-            set {
-                this["WindowTop"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public int WindowLeft {
-            get {
-                return ((int)(this["WindowLeft"]));
-            }
-            set {
-                this["WindowLeft"] = value;
             }
         }
         
@@ -224,6 +176,102 @@ namespace WpfWebRTCPlayer.Properties {
             }
             set {
                 this["set_autorunEnable"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public uint set_close2Hour {
+            get {
+                return ((uint)(this["set_close2Hour"]));
+            }
+            set {
+                this["set_close2Hour"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public uint set_close2Minute {
+            get {
+                return ((uint)(this["set_close2Minute"]));
+            }
+            set {
+                this["set_close2Minute"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool set_close2Enable {
+            get {
+                return ((bool)(this["set_close2Enable"]));
+            }
+            set {
+                this["set_close2Enable"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool set_close2Exit {
+            get {
+                return ((bool)(this["set_close2Exit"]));
+            }
+            set {
+                this["set_close2Exit"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public uint set_open2Hour {
+            get {
+                return ((uint)(this["set_open2Hour"]));
+            }
+            set {
+                this["set_open2Hour"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public uint set_open2Minute {
+            get {
+                return ((uint)(this["set_open2Minute"]));
+            }
+            set {
+                this["set_open2Minute"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool set_open2Enable {
+            get {
+                return ((bool)(this["set_open2Enable"]));
+            }
+            set {
+                this["set_open2Enable"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool set_open2JustPlayer {
+            get {
+                return ((bool)(this["set_open2JustPlayer"]));
+            }
+            set {
+                this["set_open2JustPlayer"] = value;
             }
         }
     }

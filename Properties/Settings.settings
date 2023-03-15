@@ -14,18 +14,6 @@
     <Setting Name="set_playerHeight" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">400</Value>
     </Setting>
-    <Setting Name="WindowWidth" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">450</Value>
-    </Setting>
-    <Setting Name="WindowHeight" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">217</Value>
-    </Setting>
-    <Setting Name="WindowTop" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">0</Value>
-    </Setting>
-    <Setting Name="WindowLeft" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">0</Value>
-    </Setting>
     <Setting Name="set_closeHour" Type="System.UInt32" Scope="User">
       <Value Profile="(Default)">12</Value>
     </Setting>
@@ -51,6 +39,30 @@
       <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="set_autorunEnable" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="set_close2Hour" Type="System.UInt32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="set_close2Minute" Type="System.UInt32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="set_close2Enable" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="set_close2Exit" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="set_open2Hour" Type="System.UInt32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="set_open2Minute" Type="System.UInt32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="set_open2Enable" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="set_open2JustPlayer" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
   </Settings>

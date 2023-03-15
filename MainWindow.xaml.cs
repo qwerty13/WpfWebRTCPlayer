@@ -57,28 +57,53 @@ namespace WpfWebRTCPlayer
 
         void closeTimer_Tick(object sender, EventArgs e)
         {
+            DateTime nowDate = DateTime.Now;
+            string nowTime = String.Format("{0:00}:{1:00}:{2:00}", nowDate.Hour, nowDate.Minute, nowDate.Second);
+
             if (Properties.Settings.Default.set_closeEnable)
             {
                 string originTime = String.Format("{0:00}:{1:00}:00", Properties.Settings.Default.set_closeHour, Properties.Settings.Default.set_closeMinute);
-                DateTime nowDate = DateTime.Now;
-                string nowTime = String.Format("{0:00}:{1:00}:{2:00}", nowDate.Hour, nowDate.Minute, nowDate.Second);
                 if (originTime == nowTime)
                 {
+                    if (Properties.Settings.Default.set_closeExit) Application.Current.Shutdown();
                     this.WindowState = WindowState.Minimized;
                     myPW.stopLive();
                     myPW.Visibility = Visibility.Hidden;
-                    if (Properties.Settings.Default.set_closeExit) Application.Current.Shutdown();
+                }
+            }
+            if (Properties.Settings.Default.set_close2Enable)
+            {
+                string originTime = String.Format("{0:00}:{1:00}:00", Properties.Settings.Default.set_close2Hour, Properties.Settings.Default.set_close2Minute);
+                if (originTime == nowTime)
+                {
+                    if (Properties.Settings.Default.set_close2Exit) Application.Current.Shutdown();
+                    this.WindowState = WindowState.Minimized;
+                    myPW.stopLive();
+                    myPW.Visibility = Visibility.Hidden;
                 }
             }
 
             if (Properties.Settings.Default.set_openEnable)
             {
                 string originTime = String.Format("{0:00}:{1:00}:00", Properties.Settings.Default.set_openHour, Properties.Settings.Default.set_openMinute);
-                DateTime nowDate = DateTime.Now;
-                string nowTime = String.Format("{0:00}:{1:00}:{2:00}", nowDate.Hour, nowDate.Minute, nowDate.Second);
                 if (originTime == nowTime)
                 {
                     if (!Properties.Settings.Default.set_openJustPlayer)
+                    {
+                        this.Show();
+                        this.WindowState = WindowState.Normal;
+                    }
+                    myPW.Show();
+                    myPW.Visibility = Visibility.Visible;
+                    myPW.playLive();
+                }
+            }
+            if (Properties.Settings.Default.set_open2Enable)
+            {
+                string originTime = String.Format("{0:00}:{1:00}:00", Properties.Settings.Default.set_open2Hour, Properties.Settings.Default.set_open2Minute);
+                if (originTime == nowTime)
+                {
+                    if (!Properties.Settings.Default.set_open2JustPlayer)
                     {
                         this.Show();
                         this.WindowState = WindowState.Normal;

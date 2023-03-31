@@ -15,7 +15,11 @@
                 DefaultBackgroundColor="{Binding DefaultBackgroundColor.Black, ElementName=web_player, Mode=OneWay}"
                 Loaded="web_player_Loaded" Initialized="web_player_Initialized" Cursor="None" ForceCursor="True" Focusable="False" Margin="0,0,10,10"/>
             <Border Background="#11FFFFFF" Margin="0,0,10,10" Cursor="None"></Border>
+            
+            <Border CornerRadius="2" VerticalAlignment="Center" HorizontalAlignment="Right" Width="4" Height="40" Background="#CCFFFFFF" Margin="0,0,3,0"></Border>
             <Thumb Name="ResizeGripperH" Margin="0,0,0,0" Width="10" HorizontalAlignment="Right" Cursor="SizeWE" DragDelta="ResizeGripper_H_DragDelta" Opacity="0.1"/>
+            
+            <Border CornerRadius="2" VerticalAlignment="Bottom" HorizontalAlignment="Center" Width="40" Height="4" Background="#CCFFFFFF" Margin="0,0,0,3"></Border>
             <Thumb Name="ResizeGripperV"  Margin="0,0,0,0" Height="10" VerticalAlignment="Bottom" Cursor="SizeNS" DragDelta="ResizeGripper_V_DragDelta" Opacity="0.1"/>
         </Grid>
     </Grid>

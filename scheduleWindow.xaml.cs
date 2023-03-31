@@ -75,7 +75,7 @@ namespace WpfWebRTCPlayer
                 else
                     key.DeleteValue(curAssembly.GetName().Name);
             }
-            catch(Exception ex) { }
+            catch(Exception) { }
         }
 
         private void Window_Closed(object sender, EventArgs e)

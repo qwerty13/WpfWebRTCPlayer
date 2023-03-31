@@ -7,7 +7,7 @@
         xmlns:properties="clr-namespace:WpfWebRTCPlayer.Properties"
         xmlns:c="clr-namespace:CalcBinding;assembly=CalcBinding"
         mc:Ignorable="d"
-        Title="Schedule Program" Height="250" Width="310" WindowStartupLocation="CenterScreen" Topmost="True" ShowInTaskbar="False" ResizeMode="NoResize" Closed="Window_Closed">
+        Title="Schedule Program" Height="250" Width="320" WindowStartupLocation="CenterScreen" Topmost="True" ShowInTaskbar="False" ResizeMode="NoResize" Closed="Window_Closed">
     <Grid>
         <TextBlock Text="Schedule Program" Margin="0,15,0,0" VerticalAlignment="Top" HorizontalAlignment="Center" FontSize="16" FontWeight="Bold"/>
 
@@ -26,21 +26,21 @@
                 <TextBox x:Name="txt_autoClose2Minute" Text="{Binding Source={x:Static properties:Settings.Default}, Path=set_close2Minute, Mode=TwoWay}" IsEnabled="{c:Binding Source={x:Static properties:Settings.Default}, Path=!set_close2Enable, Mode=OneWay}" Width="30" Height="20" HorizontalAlignment="Left" MaxLength="2" MaxLines="1" ToolTip="00 - 59" PreviewTextInput="minuteChecker"/>
                 <CheckBox x:Name="chk_autoclose2Exit" Margin="6,2,3,0" Content="and Exit" IsChecked="{Binding Source={x:Static properties:Settings.Default}, Path=set_close2Exit, Mode=TwoWay}" IsEnabled="{c:Binding Source={x:Static properties:Settings.Default}, Path=!set_close2Enable, Mode=OneWay}"/>
             </DockPanel>
-            <DockPanel Margin="0,5,0,5" VerticalAlignment="Top">
+            <DockPanel Margin="0,10,0,5" VerticalAlignment="Top">
                 <CheckBox x:Name="chk_autoOpenEnable" Margin="5,2,5,0" Content="#1 Show Display at:" IsChecked="{Binding Source={x:Static properties:Settings.Default}, Path=set_openEnable, Mode=TwoWay}"/>
                 <TextBox x:Name="txt_autoOpenHour" Text="{Binding Source={x:Static properties:Settings.Default}, Path=set_openHour, Mode=TwoWay}" IsEnabled="{c:Binding Source={x:Static properties:Settings.Default}, Path=!set_openEnable, Mode=OneWay}" Width="30" Height="20" MaxLength="2" MaxLines="1" ToolTip="00 - 23" PreviewTextInput="hourChecker"/>
                 <TextBlock Text=" : "/>
                 <TextBox x:Name="txt_autoOpenMinute" Text="{Binding Source={x:Static properties:Settings.Default}, Path=set_openMinute, Mode=TwoWay}" IsEnabled="{c:Binding Source={x:Static properties:Settings.Default}, Path=!set_openEnable, Mode=OneWay}" Width="30" Height="20" HorizontalAlignment="Left" MaxLength="2" MaxLines="1" ToolTip="00 - 59" PreviewTextInput="minuteChecker"/>
                 <CheckBox x:Name="chk_autoOpenJustPlayer" Margin="6,2,3,0" Content="Just Player" IsChecked="{Binding Source={x:Static properties:Settings.Default}, Path=set_openJustPlayer, Mode=TwoWay}" IsEnabled="{c:Binding Source={x:Static properties:Settings.Default}, Path=!set_openEnable, Mode=OneWay}"/>
             </DockPanel>
-            <DockPanel Margin="0,5,0,5" VerticalAlignment="Top">
+            <DockPanel Margin="0,0,0,5" VerticalAlignment="Top">
                 <CheckBox x:Name="chk_autoOpen2Enable" Margin="5,2,5,0" Content="#2 Show Display at:" IsChecked="{Binding Source={x:Static properties:Settings.Default}, Path=set_open2Enable, Mode=TwoWay}"/>
                 <TextBox x:Name="txt_autoOpen2Hour" Text="{Binding Source={x:Static properties:Settings.Default}, Path=set_open2Hour, Mode=TwoWay}" IsEnabled="{c:Binding Source={x:Static properties:Settings.Default}, Path=!set_open2Enable, Mode=OneWay}" Width="30" Height="20" MaxLength="2" MaxLines="1" ToolTip="00 - 23" PreviewTextInput="hourChecker"/>
                 <TextBlock Text=" : "/>
                 <TextBox x:Name="txt_autoOpen2Minute" Text="{Binding Source={x:Static properties:Settings.Default}, Path=set_open2Minute, Mode=TwoWay}" IsEnabled="{c:Binding Source={x:Static properties:Settings.Default}, Path=!set_open2Enable, Mode=OneWay}" Width="30" Height="20" HorizontalAlignment="Left" MaxLength="2" MaxLines="1" ToolTip="00 - 59" PreviewTextInput="minuteChecker"/>
                 <CheckBox x:Name="chk_autoOpen2JustPlayer" Margin="6,2,3,0" Content="Just Player" IsChecked="{Binding Source={x:Static properties:Settings.Default}, Path=set_open2JustPlayer, Mode=TwoWay}" IsEnabled="{c:Binding Source={x:Static properties:Settings.Default}, Path=!set_open2Enable, Mode=OneWay}"/>
             </DockPanel>
-            <DockPanel Margin="0,5,0,5" VerticalAlignment="Top">
+            <DockPanel Margin="0,10,0,5" VerticalAlignment="Top">
                 <CheckBox x:Name="chk_autorunEnable" Margin="5,2,5,0" Content="Start player on Windows startup" IsChecked="{Binding Source={x:Static properties:Settings.Default}, Path=set_autorunEnable, Mode=TwoWay}" Checked="autorunCheck" Unchecked="autorunCheck"/>
             </DockPanel>
         </StackPanel>

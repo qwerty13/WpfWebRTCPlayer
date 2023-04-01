@@ -5,36 +5,43 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfWebRTCPlayer"
         xmlns:c="clr-namespace:CalcBinding;assembly=CalcBinding"
+        xmlns:ui="http://schemas.modernwpf.com/2019"
+        ui:WindowHelper.UseModernWindowStyle="True"
         xmlns:properties="clr-namespace:WpfWebRTCPlayer.Properties"
         mc:Ignorable="d"
-        Title="WebRTC Player" Height="217" Width="450" Loaded="win_main_Loaded" Closed="win_main_Closed" ResizeMode="CanMinimize" WindowStartupLocation="CenterScreen">
+        Title="WebRTC Player" Width="460" Height="200"
+        Loaded="win_main_Loaded" Closed="win_main_Closed"
+        ResizeMode="CanMinimize" WindowStartupLocation="CenterScreen">
     <Grid>
-        <DockPanel Margin="32,0,32,84" VerticalAlignment="Bottom">
-            <Label Content="Address: " Padding="0,5,0,5"/>
-            <TextBox x:Name="txt_address" Text="{Binding Source={x:Static properties:Settings.Default}, Path=set_serverAddress, Mode=TwoWay}" Height="20"/>
-        </DockPanel>
-        <DockPanel Margin="32,0,32,57" VerticalAlignment="Bottom">
-            <Button x:Name="btn_play" Content="▶️ Play" HorizontalAlignment="Left" VerticalAlignment="Top" Click="btn_play_Click" Padding="15,1,15,1" Margin="0,0,3,0"/>
-            <Button x:Name="btn_stop" Content="⏹️ Stop" HorizontalAlignment="Left" VerticalAlignment="Top" Click="btn_stop_Click" Padding="10,1,10,1" Margin="0,0,3,0"/>
-            <CheckBox x:Name="chk_playAuto" Margin="3,2,10,0" Content="Autoplay at Start" IsChecked="{Binding Source={x:Static properties:Settings.Default}, Path=set_playAuto, Mode=TwoWay}"/>
-            <Button x:Name="btn_schedule" Content="🕒 Schedule" HorizontalAlignment="Left" VerticalAlignment="Top" Click="btn_schedule_Click" Padding="7,1,7,1" Margin="0,0,5,0"/>
-        </DockPanel>
-        <DockPanel Margin="32,0,32,27" VerticalAlignment="Bottom">
-            <TextBlock Text="ViewBox: " Height="17" FontWeight="Bold"/>
-            <TextBox x:Name="txt_width" Text="{c:Binding Source={x:Static properties:Settings.Default}, Path=set_playerWidth, Mode=TwoWay}" Width="40" Height="20"/>
-            <TextBlock Text=" x "/>
-            <TextBox x:Name="txt_height" Text="{c:Binding Source={x:Static properties:Settings.Default}, Path=set_playerHeight, Mode=TwoWay}" Width="40" Height="20" HorizontalAlignment="Left"/>
-            <Grid Width="5"/>
-            <Button x:Name="btn_showPlayer" Content="👁 Show/Hide Player" HorizontalAlignment="Left" VerticalAlignment="Top" Click="btn_showPlayer_Click" Padding="5,1,5,1" Margin="3,0,0,0"/>
-        </DockPanel>
         <StackPanel HorizontalAlignment="Center" Margin="0,13,0,0" VerticalAlignment="Top">
             <DockPanel>
                 <TextBlock Text="WebRTC Player" VerticalAlignment="Top" FontSize="24" FontWeight="Bold"/>
-                <TextBlock x:Name="lbl_version" Text="v.0.1" Margin="3,0,0,3" VerticalAlignment="Bottom"/>
+                <TextBlock x:Name="lbl_version" Text="version" Margin="3,0,0,3" VerticalAlignment="Bottom"/>
             </DockPanel>
             <DockPanel>
                 <TextBlock Text="By Morteza Rastegar"/>
             </DockPanel>
         </StackPanel>
+        
+        <DockPanel Margin="32,0,32,64" VerticalAlignment="Bottom">
+            <Label Content="Address: " FontWeight="DemiBold" Padding="0,5,2,5"/>
+            <TextBox x:Name="txt_address" Text="{Binding Source={x:Static properties:Settings.Default}, Path=set_serverAddress, Mode=TwoWay}" InputScope="Url"/>
+        </DockPanel>
+        <DockPanel Margin="32,0,32,25" VerticalAlignment="Bottom" LastChildFill="True" Height="32">
+            <Button x:Name="btn_play" HorizontalAlignment="Left" VerticalAlignment="Stretch" Click="btn_play_Click" Padding="18,1,18,1" Margin="0,0,3,0">
+                <ui:SymbolIcon Symbol="Play"/>
+            </Button>
+            <Button x:Name="btn_stop" HorizontalAlignment="Left" VerticalAlignment="Stretch" Click="btn_stop_Click" Padding="7,1,7,1" Margin="0,0,3,0">
+                <ui:SymbolIcon Symbol="Stop"/>
+            </Button>
+            <TextBlock Text="Player Box:" FontWeight="DemiBold" VerticalAlignment="Center" FontSize="14" Margin="10,0,0,0"/>
+            <ui:ToggleSwitch x:Name="btn_showPlayer" Width="85" Margin="8,0,0,0" IsOn="{c:Binding 'local:GlobalValues.PlayerWindowEnable', Mode=TwoWay}"/>
+            <Button x:Name="btn_settings" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="btn_settings_Click" Padding="7,1,7,1" Margin="0,0,0,0">
+                <StackPanel Orientation="Horizontal">
+                    <ui:SymbolIcon Symbol="Setting"/>
+                    <TextBlock Text="Settings" Margin="5,0,0,0"/>
+                </StackPanel>
+            </Button>
+        </DockPanel>
     </Grid>
 </Window>

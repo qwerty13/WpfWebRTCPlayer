@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ModernWpf;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
@@ -24,13 +25,12 @@ namespace WpfWebRTCPlayer
     /// </summary>
     public partial class MainWindow : Window
     {
-        PlayerWindow myPW;
         DispatcherTimer closeTimer = new DispatcherTimer();
-
 
         public MainWindow()
         {
             InitializeComponent();
+            //ThemeManager.Current.ApplicationTheme = ApplicationTheme.Light;
             lbl_version.Text = $"(Build { new FileInfo(Assembly.GetExecutingAssembly().Location).LastWriteTime.ToString("dd/MM/yyyy HH:mm:ss")})";
         }
 
@@ -39,10 +39,9 @@ namespace WpfWebRTCPlayer
             Top = SystemParameters.PrimaryScreenHeight - Height - 50;
             Left = (SystemParameters.PrimaryScreenWidth/2) - (Width/2);
 
-            myPW = new PlayerWindow();
-            myPW.Top = 0;
-            myPW.Left = 0;
-            myPW.Show();
+            GlobalValues.PlayerWindow = new PlayerWindow();
+            GlobalValues.PlayerWindow.Top = 0;
+            GlobalValues.PlayerWindow.Left = 0;
 
             closeTimer.Tick += new EventHandler(closeTimer_Tick);
             closeTimer.Interval = new TimeSpan(0, 0, 0, 1);
@@ -67,8 +66,8 @@ namespace WpfWebRTCPlayer
                 {
                     if (Properties.Settings.Default.set_closeExit) Application.Current.Shutdown();
                     this.WindowState = WindowState.Minimized;
-                    myPW.stopLive();
-                    myPW.Visibility = Visibility.Hidden;
+                    GlobalValues.PlayerWindow.stopLive();
+                    GlobalValues.PlayerWindow.Visibility = Visibility.Hidden;
                 }
             }
             if (Properties.Settings.Default.set_close2Enable)
@@ -78,8 +77,8 @@ namespace WpfWebRTCPlayer
                 {
                     if (Properties.Settings.Default.set_close2Exit) Application.Current.Shutdown();
                     this.WindowState = WindowState.Minimized;
-                    myPW.stopLive();
-                    myPW.Visibility = Visibility.Hidden;
+                    GlobalValues.PlayerWindow.stopLive();
+                    GlobalValues.PlayerWindow.Visibility = Visibility.Hidden;
                 }
             }
 
@@ -93,9 +92,9 @@ namespace WpfWebRTCPlayer
                         this.Show();
                         this.WindowState = WindowState.Normal;
                     }
-                    myPW.Show();
-                    myPW.Visibility = Visibility.Visible;
-                    myPW.playLive();
+                    GlobalValues.PlayerWindow.Show();
+                    GlobalValues.PlayerWindow.Visibility = Visibility.Visible;
+                    GlobalValues.PlayerWindow.playLive();
                 }
             }
             if (Properties.Settings.Default.set_open2Enable)
@@ -108,9 +107,9 @@ namespace WpfWebRTCPlayer
                         this.Show();
                         this.WindowState = WindowState.Normal;
                     }
-                    myPW.Show();
-                    myPW.Visibility = Visibility.Visible;
-                    myPW.playLive();
+                    GlobalValues.PlayerWindow.Show();
+                    GlobalValues.PlayerWindow.Visibility = Visibility.Visible;
+                    GlobalValues.PlayerWindow.playLive();
                 }
             }
         }
@@ -118,33 +117,19 @@ namespace WpfWebRTCPlayer
         private void btn_play_Click(object sender, RoutedEventArgs e)
         {
             Properties.Settings.Default.Save();
-            myPW.playLive();
+            GlobalValues.PlayerWindow.playLive();
         }
 
         private void btn_stop_Click(object sender, RoutedEventArgs e)
         {
-            myPW.stopLive();
+            GlobalValues.PlayerWindow.stopLive();
         }
 
-        private void btn_schedule_Click(object sender, RoutedEventArgs e)
+        private void btn_settings_Click(object sender, RoutedEventArgs e)
         {
-            var win_schedule = new scheduleWindow();
-            win_schedule.ShowDialog();
+            var win_settings = new settingsWindow();
+            win_settings.ShowDialog();
         }
 
-        private void btn_showPlayer_Click(object sender, RoutedEventArgs e)
-        {
-            if (myPW.IsVisible)
-            {
-                myPW.stopLive();
-                myPW.Visibility = Visibility.Hidden;
-            }
-            else
-            {
-                myPW.Visibility = Visibility.Visible;
-                myPW.Show();
-                myPW.playLive();
-            }
-        }
     }
 }
